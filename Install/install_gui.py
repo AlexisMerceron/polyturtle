@@ -14,12 +14,8 @@ if not geteuid() == 0:
     exit("You need root permissions to do this !");
 
 # Get code name OS
-result = subprocess.Popen(['lsb_release','-a'],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-out,err = result.communicate()
-table = out.decode('utf8').replace("\t","\n").split("\n")
-description = table[3]
-codename = table[7]
-
+description = subprocess.Popen(['lsb_release','-sd'], stdout=subprocess.PIPE).communicate()[0].decode('utf-8').replace("\n","")
+codename =subprocess.Popen(['lsb_release','-sc'], stdout=subprocess.PIPE).communicate()[0].decode('utf-8').replace("\n","")
 
 # Init screen
 screen = curses.initscr()
@@ -47,7 +43,7 @@ screen.addstr( 9, int(( width - 90 ) / 2), "+--------------------------------+--
 screen.addstr(10, int(( width - 90 ) / 2), "|             Name               |    Release date     |          Distrib Linux          |")
 screen.addstr(11, int(( width - 90 ) / 2), "+--------------------------------+---------------------+---------------------------------+")
 # Set choice
-choice = [["| ROS Melodic Morenia            | May, 2018           | Zesty, Yakkety, Xenial, Stretch |","melodic"],
+choice = [["| ROS Melodic Morenia            | May, 2018           | Xenial, Yakkety, Zesty, Stretch |","melodic"],
           ["| ROS Lunar Loggerhead           | May 23rd, 2017      | Xenial, Yakkety, Zesty, Stretch |","lunar"],
           ["| ROS Kinetic Kame (Recommended) | May 23rd, 2016      | Xenial, Wily, Jessie            |","kinetic"],
           ["| ROS Jade Turtle                | May 23rd, 2015      | Vivid, Utopic, Trusty           |","jade"],
