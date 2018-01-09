@@ -35,7 +35,7 @@ read -n1 -r -p "Press key to STOP !" key
 
 kill $teleop_pid
 kill $bringup_pid
-ssh pi@$IP_TURTLEBOT "pid=\$(ps aux | grep 'roslaunch' | awk '{print \$2}' | head -1); echo \$pid | xargs kill"
+ssh pi@$IP_TURTLEBOT "pid=\$(ps aux | grep '[r]oslaunch' | awk '{print \$2}' | head -1); echo \$pid | xargs kill"
 kill $slam_pid
 kill $rvizslam_pid
 kill $roscore_pid
