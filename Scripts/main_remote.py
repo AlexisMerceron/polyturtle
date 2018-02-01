@@ -37,6 +37,7 @@ class TurtleBot():
 
 if __name__ == '__main__':
     try:
+        import time
         bot = TurtleBot()
         rospy.sleep(0.5)
         bot.moveForward(10)
