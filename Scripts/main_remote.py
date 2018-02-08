@@ -7,10 +7,11 @@ from math import radians
 
 
 class TurtleBot():
-    def __init__(self):
+    def __init__(self, namespace):
+        self.namespace = namespace
         rospy.init_node('MainTurtleBot', anonymous=False)
         rospy.loginfo("To stop CTRL + C")
-        self.pub = rospy.Publisher('/move', String, queue_size=10)
+        self.pub = rospy.Publisher(self.namespace + '/move', String, queue_size=10)
         self.rate = rospy.Rate(10)
 
     def moveForward(self, distance):
@@ -38,16 +39,16 @@ class TurtleBot():
 if __name__ == '__main__':
     try:
         import time
-        bot = TurtleBot()
+        bot = TurtleBot("/hades")
         rospy.sleep(0.5)
         bot.moveForward(10)
-        bot.turnLeft(90)
-        bot.moveForward(10)
-        bot.turnRight(90)
-        bot.moveBackward(10)
-        bot.turnRight(90)
-        bot.moveForward(10)
-        bot.turnLeft(90)
+        #bot.turnLeft(90)
+        #bot.moveForward(10)
+        #bot.turnRight(90)
+        #bot.moveBackward(10)
+        #bot.turnRight(90)
+        #bot.moveForward(10)
+        #bot.turnLeft(90)
     except Exception as e:
         print e
         rospy.loginfo("MainTurtleBot node terminated.")
