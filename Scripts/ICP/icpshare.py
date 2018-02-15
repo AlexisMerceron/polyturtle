@@ -61,12 +61,12 @@ class TurtleBot():
         print(R)
         print(T)
     
-        fig = plt.figure()
-        ax = fig.add_subplot(111)
-        ax.scatter([x[0] for x in A], [y[1] for y in A], c='red')
-        ax.scatter([x[0] for x in B], [y[1] for y in B], c='blue')
-        ax.scatter([x[0] for x in C], [y[1] for y in C], c='green')
-        plt.show()
+        #fig = plt.figure()
+        #ax = fig.add_subplot(111)
+        #ax.scatter([x[0] for x in A], [y[1] for y in A], c='red')
+        #ax.scatter([x[0] for x in B], [y[1] for y in B], c='blue')
+        #ax.scatter([x[0] for x in C], [y[1] for y in C], c='green')
+        #plt.show()
    		
     def shutdown(self):
         rospy.loginfo("Stopping node")
